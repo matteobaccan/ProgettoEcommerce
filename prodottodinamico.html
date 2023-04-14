@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- ChatGPT: mi scrivi una pagina di dettaglio prodotto con bootstrap5 -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dettaglio prodotto</title>
+  <!-- Collegamento ai file CSS di Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Il mio sito</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Chi siamo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="prodotti.html">Prodotti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="carrello.html">Carrello</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contatti</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="https://via.placeholder.com/600x400" alt="Immagine di esempio" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h1 class="mb-4">Nome prodotto</h1>
+        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus nec ante sagittis
+          ultrices vel vitae justo. Fusce at erat neque. Nunc ultrices risus sed sapien faucibus, a elementum nibh
+          vestibulum. Sed ut metus nulla. Nulla in nisi in elit consectetur mollis. </p>
+        <h2 class="mb-3">Prezzo: €XX,XX</h2>
+        <form>
+          <div class="mb-3">
+            <label for="quantita" class="form-label">Quantità:</label>
+            <input type="number" class="form-control" id="quantita" min="1" value="1">
+          </div>
+          <span class="btn btn-primary">Aggiungi al carrello</span>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <a href="?id=1" class="btn btn-success">Prodotto 1</a>
+      </div>
+      <div class="col">
+        <a href="?id=2" class="btn btn-success">Prodotto 2</a>
+      </div>
+      <div class="col">
+        <a href="?id=3" class="btn btn-success">Prodotto 3</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light py-3">
+    <div class="container text-center">
+      <p>&copy; 2023 Il mio sito - Tutti i diritti riservati</p>
+    </div>
+  </footer>
+
+  <!-- Collegamento ai file JavaScript di Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // prendi un parametro da url
+    // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+    function getParameterByName(name, url) {
+      url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Prendi l'id del prodotto dalla url
+    let id = getParameterByName('id');
+
+    // Elenco prodotti
+    let prodotti = [{
+      "id": 1,
+      "nome": "Prodotto 1",
+      "prezzo": 10.00,
+      "descrizione": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus nec ante sagittis ultrices vel vitae justo. Fusce at erat neque. Nunc ultrices risus sed sapien faucibus, a elementum nibh vestibulum. Sed ut metus nulla. Nulla in nisi in elit consectetur mollis. ",
+      "immagine": "https://via.placeholder.com/600x400"
+    },
+    {
+      "id": 2,
+      "nome": "Prodotto 2",
+      "prezzo": 20.00,
+      "descrizione": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus nec ante sagittis ultrices vel vitae justo. Fusce at erat neque. Nunc ultrices risus sed sapien faucibus, a elementum nibh vestibulum. Sed ut metus nulla. Nulla in nisi in elit consectetur mollis. ",
+      "immagine": "https://via.placeholder.com/600x400"
+    },
+    {
+      "id": 3,
+      "nome": "Prodotto 3",
+      "prezzo": 30.00,
+      "descrizione": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus nec ante sagittis ultrices vel vitae justo. Fusce at erat neque. Nunc ultrices risus sed sapien faucibus, a elementum nibh vestibulum. Sed ut metus nulla. Nulla in nisi in elit consectetur mollis. ",
+      "immagine": "https://via.placeholder.com/600x400"
+    }
+    ];
+
+    // Prendi il prodotto con id uguale a quello passato in GET
+    let prodotto = prodotti.find(p => p.id == id);
+
+    // Se non trovi il prodotto, mostra un messaggio di errore
+    if (!prodotto) {
+      document.querySelector('main').innerHTML = '<h1>Prodotto non trovato</h1>';
+    } else {
+      // Altrimenti, mostra il prodotto
+      document.querySelector('h1').innerHTML = prodotto.nome;
+      document.querySelector('img').src = prodotto.immagine;
+      document.querySelector('p').innerHTML = prodotto.descrizione;
+      document.querySelector('h2').innerHTML = 'Prezzo: €' + prodotto.prezzo;
+    }
+
+  </script>
+</body>
+
+</html>
