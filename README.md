@@ -1,6 +1,6 @@
 # ProgettoEcommerce
 
-Progetto per corso WebDesign2
+Progetto per corso WebDesign2.....
 
 Esempio di pubblicazione di un ecommerce da GitHub a Netlify, con la creazione di pagine utilizzanzo ChatGPT
 
