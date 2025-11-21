@@ -48,7 +48,7 @@ Il progetto è pubblicato su Netlify. Per aggiornare il sito:
 - Mantieni lo stile del progetto coerente e aggiungi commenti/documentazione dove necessario.
 
 ## Licenza
-Specifica qui la licenza del progetto (es. MIT) o rimuovi questa sezione se non applicabile.
+MIT
 
 ## Autore
 Matteo Baccan
